@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Hug Night 🌙💞</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at bottom, #0f0f1a, #000814);
+            color: white;
+        }
+
+        /* ⭐ Stars */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.2;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 🌠 Shooting Star */
+        .shooting-star {
+            position: absolute;
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(-45deg, white, transparent);
+            top: 20%;
+            left: -150px;
+            transform: rotate(25deg);
+            animation: shoot 6s linear infinite;
+        }
+
+        @keyframes shoot {
+            0% {
+                left: -150px;
+                top: 20%;
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+            100% {
+                left: 110%;
+                top: 50%;
+                opacity: 0;
+            }
+        }
+
+        /* Card */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 60px;
+            width: 95%;
+            max-width: 600px;
+            text-align: center;
+            border-radius: 25px;
+            box-shadow: 0 0 40px rgba(255, 105, 180, 0.3);
+            z-index: 2;
+        }
+
+        h1 {
+            color: #ff9ecb;
+        }
+
+        /* Button */
+        .hug-btn {
+            margin-top: 30px;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            background: #ff4d94;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 20px #ff4d94;
+        }
+
+        .hug-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px #ff4d94;
+        }
+
+        /* Hug Section */
+        .hug-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Hug Image */
+        .hug-gif {
+            width: 250px;
+            border-radius: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Glowing Circle */
+        .glow-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 320px;
+            height: 320px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px #ff4d94, 0 0 100px #ff1493;
+            animation: pulseRing 2s infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            font-size: 20px;
+            color: #ff6ec7;
+            text-shadow: 0 0 10px #ff6ec7;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="shooting-star"></div>
+
+    <div class="card" id="mainCard">
+        <h1>Manu 🌙🤍</h1>
+        <h2>Under this beautiful starlit night...</h2>
+        <p>Tap below to receive my warm hug 💞</p>
+        <button class="hug-btn" onclick="showHug()">Open My Hug ❤️</button>
+    </div>
+
+    <script>
+
+        /* ⭐ Generate Stars */
+        for (let i = 0; i < 120; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.top = Math.random() * 100 + "vh";
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            document.body.appendChild(star);
+        }
+
+        /* 💖 Floating Hearts */
+        setInterval(() => {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }, 800);
+
+        /* 💞 Show Second Page */
+        function showHug() {
+            document.getElementById("mainCard").innerHTML = `
+        
+        <div class="hug-container">
+            <div class="glow-ring"></div>
+            <img src="hug.png" class="hug-gif">
+        </div>
+
+        <div style="margin-top:40px;">
+            <h2>
+                Come here… 🤍  
+                Let this hug melt all your worries away.
+            </h2>
+
+            <p style="margin-top:20px; color:#ffb6d9; font-weight:bold;">
+                In my arms, you will always find comfort,
+                warmth, and forever love. 💞
+            </p>
+
+            <p style="margin-top:25px; font-size:18px; color:#ffc0dd;">
+                Happy Hug Day ❤️ <br>
+                ~ Forever Yours, Sitaram 🤍
+            </p>
+        </div>
+    `;
+        }
+
+    </script>
+
+</body>
+
+</html>
